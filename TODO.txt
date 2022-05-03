@@ -1,0 +1,6 @@
+To Do
+
+* Snap 3D Cursor To Center Button
+* Auto Rigging?
+* Premade Meshes and Rigs for Humanoids
+* Desintigration Modifier
