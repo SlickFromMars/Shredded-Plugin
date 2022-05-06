@@ -14,9 +14,11 @@ if "bpy" in locals():
     import importlib
     importlib.reload(shaders)
     importlib.reload(meshes)
+    importlib.reload(icons)
 else:
     from . import shaders
     from . import meshes
+    from . import icons
 
 
 import bpy
@@ -36,6 +38,7 @@ def register():
 
     shaders.register()
     meshes.register()
+    icons.register_icons()
 
     print("\nLoaded successfully.")
     
@@ -48,6 +51,7 @@ def unregister():
 
     shaders.unregister()
     meshes.unregister()
+    icons.unregister_icons()
 
     print("\nUnloaded successfully. Sorry to see you go.")
     
