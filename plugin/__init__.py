@@ -13,20 +13,20 @@ bl_info = {
 if "bpy" in locals():
     import importlib
     importlib.reload(add_mesh_sus)
-    importlib.reload(sidebar_setup)
+    importlib.reload(galaxy_node)
 else:
     from . import add_mesh_sus
-    from . import sidebar_setup
+    from . import galaxy_node
 
 import bpy
 
 
 def register():
     add_mesh_sus.register()
-    sidebar_setup.register()
+    galaxy_node.register()
     
 
 def unregister():
     add_mesh_sus.unregister()
-    sidebar_setup.unregister()
+    galaxy_node.unregister()
     
