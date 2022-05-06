@@ -1,47 +1,6 @@
 import bpy
-from bpy.types import Operator
 from bpy.props import FloatVectorProperty
-from bpy_extras.object_utils import AddObjectHelper, object_data_add
 from mathutils import Vector
-
-class OBJECT_SUS_add_object(Operator, AddObjectHelper):
-    """Create a Amogus Mesh"""
-    bl_idname = "mesh.add_sus"
-    bl_label = "Add Amogus Mesh"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-
-        add_object(self, context)
-
-        return {'FINISHED'}
-
-def add_object(self, context):
-    mesh = bpy.data.meshes.new(name="Amogus")
-    mesh.from_pydata(sussy_verts, sussy_edges, sussy_faces)
-    # useful for development when the mesh may be invalid.
-    # mesh.validate(verbose=True)
-    object_data_add(context, mesh, operator=self)
-
-### REGISTER
-
-def add_object_button(self, context):
-    self.layout.operator(
-        OBJECT_SUS_add_object.bl_idname,
-        text="LowPoly Amogus",
-        icon='MEMORY')
-
-def register():
-    bpy.utils.register_class(OBJECT_SUS_add_object)
-    bpy.types.VIEW3D_MT_mesh_add.append(add_object_button)
-
-
-def unregister():
-    bpy.utils.unregister_class(OBJECT_SUS_add_object)
-    bpy.types.VIEW3D_MT_mesh_add.remove(add_object_button)
-
-if __name__ == "__main__":
-    register()
 
 ### DATA
 

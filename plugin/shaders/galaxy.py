@@ -1,25 +1,5 @@
 import bpy
-
-
-class TestPanel(bpy.types.Panel):
-    """Creates a Panel in the Object properties window"""
-    bl_label = "Custom Shaders"
-    bl_idname = "OBJECT_PT_shader_presets"
-    bl_space_type = 'NODE_EDITOR'
-    bl_region_type = 'UI'
-    bl_category = "Shredded"
-
-    def draw(self, context):
-        layout = self.layout
-
-        row = layout.row()
-        layout.label(text= "Select A Shader To Be Added.")
-        
-        row = layout.row()
-        row.operator('shader.galaxy_ops')
-        
-        
-        
+         
 ### GALAXY SHADER
 class SHADER_OT_GALAXY(bpy.types.Operator):
     bl_label = "Galaxy"
@@ -86,18 +66,3 @@ class SHADER_OT_GALAXY(bpy.types.Operator):
         bpy.context.object.active_material = material_galaxy
         
         return{'FINISHED'}        
-    
-
-### REGISTER
-def register():
-    bpy.utils.register_class(TestPanel)
-    bpy.utils.register_class(SHADER_OT_GALAXY)
-
-
-def unregister():
-    bpy.utils.unregister_class(TestPanel)
-    bpy.utils.unregister_class(SHADER_OT_GALAXY)
-
-
-if __name__ == "__main__":
-    register()
