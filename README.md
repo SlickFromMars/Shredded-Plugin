@@ -10,6 +10,6 @@ Planned Features:
 * More Preset Meshes
 * Auto Rigging
 * Cursor Center Button
-* Landscape Gem
+* Landscape Gen
 * Custom Icons
  
