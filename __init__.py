@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Shredded Blender Plugin",
     "author": "SlickFromMars",
-    "version": (0, 2, 5),
+    "version": (0, 2, 6),
     "blender": (2, 80, 0),
     "location": "View 3D > Sidebar > Create Tab",
     "description": "A powerful plugin with many functions.",
