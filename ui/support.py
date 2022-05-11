@@ -1,9 +1,15 @@
+if "bpy" in locals():
+    import importlib
+    importlib.reload(globs)
+else:
+    from .. import globs
+
 import bpy
 import webbrowser
 
 class ShreddedSupportPanel(bpy.types.Panel):
-    bl_label = "Credits"
-    bl_idname = "SHREDDED.credits"
+    bl_label = "Support"
+    bl_idname = "SHREDDED.support"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = "Shredded"
@@ -11,36 +17,18 @@ class ShreddedSupportPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        box = layout.box()
-        col = box.column(align=True)
-        row = col.row(align=True)
-        row.label(text="Created by SlickFromMars")
+        col = layout.column(align=True)
 
         row = col.row(align=True)
-        row.scale_y = 1.4
-        row.operator(GithubButton.bl_idname)
-        
-        row = col.row(align=True)
-        row.operator(YoutubeButton.bl_idname)
-        
-class GithubButton(bpy.types.Operator):
-    bl_idname = 'cats_credits.discord'
-    bl_label = 'Github'
-    bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
+        row.operator(IssueButton.bl_idname)
+
+class IssueButton(bpy.types.Operator):
+    bl_idname = 'shredded.issues'
+    bl_label = 'Report An Issue'
+    bl_options = {'REGISTER', 'INTERNAL'}
 
     def execute(self, context):
-        webbrowser.open('https://github.com/SlickFromMars/Shredded-Plugin')
+        webbrowser.open(globs.issue_link)
 
-        self.report({'INFO'}, 'Opened GitHub!')
-        return {'FINISHED'}
-    
-class YoutubeButton(bpy.types.Operator):
-    bl_idname = 'cats_credits.youtube'
-    bl_label = 'Youtube'
-    bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
-
-    def execute(self, context):
-        webbrowser.open('https://www.youtube.com/channel/UC7mKRZmigocWNRX63JV3Ttw')
-
-        self.report({'INFO'}, 'Opened Youtube!')
+        self.report({'INFO'}, 'Opened Issue Reports!')
         return {'FINISHED'}

@@ -1,5 +1,3 @@
-import bpy
-from bpy.props import FloatVectorProperty
 from mathutils import Vector
 
 ### DATA

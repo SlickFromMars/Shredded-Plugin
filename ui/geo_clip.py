@@ -1,3 +1,8 @@
+if "bpy" in locals():
+    import importlib
+    importlib.reload(geometry)
+else:
+    from ..tools import geometry
 import bpy
 
 ###THE PANEL
@@ -44,7 +49,8 @@ class GEO_CLIP_verts(bpy.types.Operator):
     
     def execute(self, context):
         try:
-            get_geo("vert")
+            geometry.get_geo("vert")
+            self.report({'INFO'}, 'Added to clipboard!')
         except:
             self.report({'ERROR'}, 'There was an error geting the data.')
         
@@ -56,7 +62,8 @@ class GEO_CLIP_edges(bpy.types.Operator):
     
     def execute(self, context):
         try:
-            get_geo("edge")
+            geometry.get_geo("edge")
+            self.report({'INFO'}, 'Added to clipboard!')
         except:
             self.report({'ERROR'}, 'There was an error geting the data.')
         
@@ -68,43 +75,9 @@ class GEO_CLIP_faces(bpy.types.Operator):
     
     def execute(self, context):
         try:
-            get_geo("face")
+            geometry.get_geo("face")
+            self.report({'INFO'}, 'Added to clipboard!')
         except:
             self.report({'ERROR'}, 'There was an error geting the data.')
         
         return{"FINISHED"}
-
-        
-###THE FUNCTION
-def get_geo(string):
-    object = bpy.context.object
-
-    raw = []
-    match(string):
-        case "vert":
-            raw = object.data.vertices
-        case "edge":
-            raw = object.data.edges
-        case "face":
-            raw = object.data.polygons
-            
-    data = []
-    for i in raw:
-        match(string):
-            case "vert":
-                data.append(i.co)
-            case "edge":
-                data2 = []
-                for i2 in i.vertices:
-                    data2.append(i2)
-                data.append(data2)
-            case "face":
-                data2 = []
-                for i2 in i.vertices:
-                    data2.append(i2)
-                data.append(data2)
-    
-    data_str = str(data)
-
-    bpy.context.window_manager.clipboard = data_str
-    return{"FINISHED"}
