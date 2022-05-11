@@ -11,18 +11,26 @@ class SHREDDED_geo_clip(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        col = layout.column(align=True)
-        row = col.row(align=True)
-        row.label(text="Add PyData to clipboard.")
-
+        
         box = layout.box()
         col = box.column(align=True)
-        row = col.row(align=True)
-        row.operator(GEO_CLIP_verts.bl_idname, icon= 'VERTEXSEL')
-        row = col.row(align=True)
-        row.operator(GEO_CLIP_edges.bl_idname, icon= 'EDGESEL')
-        row = col.row(align=True)
-        row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
+
+        if bpy.context.object.select_get() == False:
+            row = col.row(align=True)
+            row.label(text="No object selected.") 
+            
+        elif bpy.context.object.type == 'MESH':
+            col.label(text="Mesh Data")
+            row = col.row(align=True)
+            row.operator(GEO_CLIP_verts.bl_idname, icon= 'VERTEXSEL')
+            row = col.row(align=True)
+            row.operator(GEO_CLIP_edges.bl_idname, icon= 'EDGESEL')
+            row = col.row(align=True)
+            row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
+            
+        else:
+            row = col.row(align=True)
+            row.label(text="Selection is not compatible.")
         
         
 ###THE BUTTONS
@@ -61,7 +69,7 @@ class GEO_CLIP_faces(bpy.types.Operator):
             self.report({'ERROR'}, 'There was an error geting the data.')
         
         return{"FINISHED"}
-        
+
         
 ###THE FUNCTION
 def get_geo(string):
