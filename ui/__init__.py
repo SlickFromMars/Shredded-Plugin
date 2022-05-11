@@ -1,8 +1,10 @@
 if "bpy" in locals():
     import importlib
     importlib.reload(geo_clip)
+    importlib.reload(support)
 else:
     from . import geo_clip
+    from . import support
 
 import bpy
 
@@ -11,7 +13,10 @@ classes = [
     geo_clip.SHREDDED_geo_clip,
     geo_clip.GEO_CLIP_verts,
     geo_clip.GEO_CLIP_edges,
-    geo_clip.GEO_CLIP_faces
+    geo_clip.GEO_CLIP_faces,
+    support.ShreddedSupportPanel,
+    support.GithubButton,
+    support.YoutubeButton
 ]
 
 def register():

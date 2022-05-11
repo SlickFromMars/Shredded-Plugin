@@ -2,9 +2,11 @@ if "bpy" in locals():
     import importlib
     importlib.reload(low_poly_amogus)
     importlib.reload(menu)
+    importlib.reload(cubee_preset)
 else:
     from . import low_poly_amogus
     from . import menu
+    from . import cubee_preset
 
 import bpy
 from bpy.types import Operator
@@ -28,7 +30,8 @@ def menu_func(self, context):
 ### REGISTER
 classes = [
     menu.VIEW3D_MT_mesh_presets,
-    low_poly_amogus.AddSus
+    low_poly_amogus.AddSus,
+    cubee_preset.AddCubee
 ]
 
 def register():

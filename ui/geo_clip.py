@@ -15,7 +15,11 @@ class SHREDDED_geo_clip(bpy.types.Panel):
         box = layout.box()
         col = box.column(align=True)
 
-        if bpy.context.object.select_get() == False:
+        if len(bpy.context.scene.objects) == 0:
+            row = col.row(align=True)
+            row.label(text="No objects in scene.")
+            
+        elif bpy.context.object.select_get() == False:
             row = col.row(align=True)
             row.label(text="No object selected.") 
             

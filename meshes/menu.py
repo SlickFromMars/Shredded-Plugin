@@ -1,8 +1,10 @@
 if "bpy" in locals():
     import importlib
     importlib.reload(low_poly_amogus)
+    importlib.reload(cubee_preset)
 else:
     from . import low_poly_amogus
+    from . import cubee_preset
 
 import bpy
 from bpy.types import Operator
@@ -20,3 +22,4 @@ class VIEW3D_MT_mesh_presets(Menu):
         layout = self.layout
         layout.operator_context = 'INVOKE_REGION_WIN'
         layout.operator('mesh.add_sus', text="LowPoly Amogus", icon='MEMORY')
+        layout.operator('mesh.add_cubee', text="Cubee", icon='MOD_WIREFRAME')
