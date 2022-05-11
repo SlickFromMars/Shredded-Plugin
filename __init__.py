@@ -3,7 +3,7 @@ bl_info = {
     "author": "SlickFromMars",
     "version": (0, 3, 0),
     "blender": (2, 80, 0),
-    "location": "View 3D > Sidebar > Create Tab",
+    "location": "View 3D > Sidebar > Shredded Tab",
     "description": "A powerful plugin with many functions.",
     "warning": "",
     "doc_url": "",
@@ -14,9 +14,11 @@ if "bpy" in locals():
     import importlib
     importlib.reload(shaders)
     importlib.reload(meshes)
+    importlib.reload(ui)
 else:
     from . import shaders
     from . import meshes
+    from . import ui
 
 
 import bpy
@@ -32,6 +34,7 @@ def register():
 
     shaders.register()
     meshes.register()
+    ui.register()
 
     from bpy.utils import register_class
     for cls in classes:
@@ -44,6 +47,7 @@ def unregister():
 
     shaders.unregister()
     meshes.unregister()
+    ui.unregister()
 
     from bpy.utils import unregister_class
     for cls in reversed(classes):
