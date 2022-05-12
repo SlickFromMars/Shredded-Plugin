@@ -7,8 +7,9 @@ else:
 import bpy
 import webbrowser
 
+### PANEL
 class ShreddedCreditsPanel(bpy.types.Panel):
-    bl_label = "Credits"
+    bl_label = "Credits & Support"
     bl_idname = "SHREDDED.credits"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -20,33 +21,68 @@ class ShreddedCreditsPanel(bpy.types.Panel):
         box = layout.box()
         col = box.column(align=True)
         row = col.row(align=True)
-        row.label(text="Created by SlickFromMars")
+        row.label(text="Contributors")
 
         row = col.row(align=True)
         row.scale_y = 1.2
-        row.operator(GithubButton.bl_idname)
+        row.operator(YoutubeButton.bl_idname)
+
+        col.separator()
+        col.separator()
+
+        row = col.row(align=True)
+        row.label(text="Found a bug? Suggestion?")
+        row = col.row(align=True)
+        row.scale_y = 1.5
+        row.operator(IssueButton.bl_idname)
+        col.separator()
+        row = col.row(align=True)
+        row.operator(RepoButton.bl_idname)
         
         row = col.row(align=True)
-        row.operator(YoutubeButton.bl_idname)
-        
-class GithubButton(bpy.types.Operator):
-    bl_idname = 'shredded.github'
-    bl_label = 'Github'
-    bl_options = {'REGISTER', 'INTERNAL'}
+        row.operator(LatestPatchButton.bl_idname, icon= "WORDWRAP_ON")
 
-    def execute(self, context):
-        webbrowser.open(globs.github_link)
+### BUTTONS
 
-        self.report({'INFO'}, 'Opened GitHub!')
-        return {'FINISHED'}
-    
 class YoutubeButton(bpy.types.Operator):
     bl_idname = 'shredded.youtube'
-    bl_label = 'Youtube'
+    bl_label = 'SlickFromMars'
     bl_options = {'REGISTER', 'INTERNAL'}
 
     def execute(self, context):
         webbrowser.open(globs.youtube_link)
 
-        self.report({'INFO'}, 'Opened Youtube!')
+        return {'FINISHED'}
+     
+class RepoButton(bpy.types.Operator):
+    bl_idname = 'shredded.repository'
+    bl_label = 'View The Repo'
+    bl_options = {'REGISTER', 'INTERNAL'}
+
+    def execute(self, context):
+        webbrowser.open(globs.repo_link)
+
+        self.report({'INFO'}, 'Opened GitHub!')
+        return {'FINISHED'}
+
+class LatestPatchButton(bpy.types.Operator):
+    bl_idname = 'shredded.latest'
+    bl_label = 'Latest Patch Notes'
+    bl_options = {'REGISTER', 'INTERNAL'}
+
+    def execute(self, context):
+        webbrowser.open(globs.repo_link + "/releases")
+
+        self.report({'INFO'}, 'Opened GitHub!')
+        return {'FINISHED'}
+
+class IssueButton(bpy.types.Operator):
+    bl_idname = 'shredded.issues'
+    bl_label = 'Let Us Know!'
+    bl_options = {'REGISTER', 'INTERNAL'}
+
+    def execute(self, context):
+        webbrowser.open(globs.issue_link)
+
+        self.report({'INFO'}, 'Opened Issue Reports!')
         return {'FINISHED'}

@@ -27,17 +27,17 @@ classes1 = [
     ui.geo_clip.GEO_CLIP_verts,
     ui.geo_clip.GEO_CLIP_edges,
     ui.geo_clip.GEO_CLIP_faces,
-    ui.credits.GithubButton,
     ui.credits.YoutubeButton,
-    ui.support.IssueButton
+    ui.credits.IssueButton,
+    ui.credits.RepoButton,
+    ui.credits.LatestPatchButton
 ]
 ### For panels and stuff that would require prereqs
 classes2 = [
     ui.preset_meshes.VIEW3D_MT_mesh_presets,
     ui.shaders.ShaderPanel,
     ui.geo_clip.SHREDDED_geo_clip,
-    ui.credits.ShreddedCreditsPanel,
-    ui.support.ShreddedSupportPanel
+    ui.credits.ShreddedCreditsPanel
 ]
 
 def register_classes():
