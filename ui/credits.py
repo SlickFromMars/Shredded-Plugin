@@ -36,8 +36,6 @@ class ShreddedCreditsPanel(bpy.types.Panel):
         row.scale_y = 1.5
         row.operator(IssueButton.bl_idname)
         col.separator()
-        row = col.row(align=True)
-        row.operator(RepoButton.bl_idname)
         
         row = col.row(align=True)
         row.operator(LatestPatchButton.bl_idname, icon= "WORDWRAP_ON")
@@ -52,17 +50,6 @@ class YoutubeButton(bpy.types.Operator):
     def execute(self, context):
         webbrowser.open(globs.youtube_link)
 
-        return {'FINISHED'}
-     
-class RepoButton(bpy.types.Operator):
-    bl_idname = 'shredded.repository'
-    bl_label = 'View The Repo'
-    bl_options = {'REGISTER', 'INTERNAL'}
-
-    def execute(self, context):
-        webbrowser.open(globs.repo_link)
-
-        self.report({'INFO'}, 'Opened GitHub!')
         return {'FINISHED'}
 
 class LatestPatchButton(bpy.types.Operator):

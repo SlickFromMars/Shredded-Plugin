@@ -29,7 +29,6 @@ classes1 = [
     ui.geo_clip.GEO_CLIP_faces,
     ui.credits.YoutubeButton,
     ui.credits.IssueButton,
-    ui.credits.RepoButton,
     ui.credits.LatestPatchButton
 ]
 ### For panels and stuff that would require prereqs
