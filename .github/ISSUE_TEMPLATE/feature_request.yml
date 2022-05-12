@@ -1,6 +1,6 @@
 name: Feature Request
 description: Suggest features for the plugin here.
-labels: [bug]
+labels: [suggestion]
 body:
   - type: textarea
     id: idea
