@@ -6,7 +6,7 @@ bl_info = {
     "location": "View 3D > Sidebar > Shredded Tab",
     "description": "A powerful plugin with many functions.",
     "warning": "",
-    "doc_url": "",
+    "tracker_url": "https://github.com/SlickFromMars/Shredded-Plugin/issues/new/choose",
     "category": "3D View",
 }
 
