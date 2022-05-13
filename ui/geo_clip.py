@@ -2,10 +2,14 @@ if "bpy" in locals():
     import importlib
     importlib.reload(geometry)
     importlib.reload(common)
+    importlib.reload(globs)
 else:
     from ..tools import geometry
     from ..tools import common
+    from .. import globs
 import bpy
+
+from bpy_extras.io_utils import ExportHelper
 
 ###THE PANEL
 class SHREDDED_geo_clip(bpy.types.Panel):
@@ -35,11 +39,11 @@ class SHREDDED_geo_clip(bpy.types.Panel):
             row = col.row(align=True)
             row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
 
-        if obj_count > 1:
-            col.separator()
-            row = col.row(align=True)
-            row.scale_y = 1.1
-            row.prop(context.scene, 'geoclip_list', icon='ARMATURE_DATA')  
+            if obj_count > 1:
+                col.separator()
+                row = col.row(align=True)
+                row.scale_y = 1.1
+                row.prop(context.scene, 'geoclip_list', icon='OUTLINER_OB_MESH')
         
         
 ###THE BUTTONS
