@@ -1,8 +1,10 @@
 if "bpy" in locals():
     import importlib
     importlib.reload(geometry)
+    importlib.reload(common)
 else:
     from ..tools import geometry
+    from ..tools import common
 import bpy
 
 ###THE PANEL
@@ -20,31 +22,29 @@ class SHREDDED_geo_clip(bpy.types.Panel):
         box = layout.box()
         col = box.column(align=True)
 
-        if len(bpy.context.scene.objects) == 0:
+        obj_count = len(common.get_comp_objects())
+        if obj_count == 0:
             row = col.row(align=True)
             row.label(text="No objects in scene.")
-            
-        elif bpy.context.object.select_get() == False:
+        else:
+            col.label(text="Copy Mesh Data")
             row = col.row(align=True)
-            row.label(text="No object selected.") 
-            
-        elif bpy.context.object.type == 'MESH':
-            col.label(text="Mesh Data")
-            row = col.row(align=True)
+            row.scale_y = 1.2
             row.operator(GEO_CLIP_verts.bl_idname, icon= 'VERTEXSEL')
-            row = col.row(align=True)
             row.operator(GEO_CLIP_edges.bl_idname, icon= 'EDGESEL')
             row = col.row(align=True)
             row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
-            
-        else:
+
+        if obj_count > 1:
+            col.separator()
             row = col.row(align=True)
-            row.label(text="Selection is not compatible.")
+            row.scale_y = 1.1
+            row.prop(context.scene, 'geoclip_list', icon='ARMATURE_DATA')  
         
         
 ###THE BUTTONS
 class GEO_CLIP_verts(bpy.types.Operator):
-    bl_label = "Copy Vertices"
+    bl_label = "Vertices"
     bl_idname = 'geocopy.verts'
     
     def execute(self, context):
@@ -57,7 +57,7 @@ class GEO_CLIP_verts(bpy.types.Operator):
         return{"FINISHED"}
     
 class GEO_CLIP_edges(bpy.types.Operator):
-    bl_label = "Copy Edges"
+    bl_label = "Edges"
     bl_idname = 'geocopy.edges'
     
     def execute(self, context):
@@ -70,7 +70,7 @@ class GEO_CLIP_edges(bpy.types.Operator):
         return{"FINISHED"}
     
 class GEO_CLIP_faces(bpy.types.Operator):
-    bl_label = "Copy Faces"
+    bl_label = "Faces"
     bl_idname = 'geocopy.faces'
     
     def execute(self, context):

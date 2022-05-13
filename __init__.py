@@ -29,6 +29,7 @@ def register():
     print("Loading SHREDDED...")
 
     registry.register_classes()
+    tools.definitions.register_enums()
 
     print("\nLoaded successfully.")
     
