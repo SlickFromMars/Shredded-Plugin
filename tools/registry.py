@@ -22,8 +22,7 @@ def preset_func(self, context):
 classes1 = [
     ui.preset_meshes.AddSus,
     ui.preset_meshes.AddCubee,
-    ui.shaders.SHADER_OT_GALAXY,
-    ui.shaders.SHADER_OT_FOIL,
+    ui.shaders.SHADER_OT_ADD,
     ui.geo_clip.GEO_CLIP_verts,
     ui.geo_clip.GEO_CLIP_edges,
     ui.geo_clip.GEO_CLIP_faces,

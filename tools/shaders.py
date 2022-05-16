@@ -1,5 +1,13 @@
 import bpy
 
+def CREATE_shader_main(self, context):
+    shader = bpy.context.scene.shader_presets
+    match shader:
+        case "GALAXY":
+            CREATE_galaxy_shader(self, context)
+        case "FOIL":
+            CREATE_foil_shader(self, context)
+
 ### GALAXY SHADER
 def CREATE_galaxy_shader(self, context):
     material_galaxy = bpy.data.materials.new(name="Galaxy Volume")

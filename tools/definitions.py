@@ -12,3 +12,12 @@ def register_enums():
         items= Common.get_comp_list,
         update= Common.update_shredded_list
     )
+
+    Scene.shader_presets = EnumProperty(
+        name= "Preset",
+        description= "List of shaders.",
+        items= [
+            ("GALAXY", 'Galaxy', ''),
+            ("FOIL", 'Shiny Foil', '')
+        ]
+    )

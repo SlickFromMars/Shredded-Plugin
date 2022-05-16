@@ -19,31 +19,21 @@ class ShaderPanel(bpy.types.Panel):
 
         row = layout.row()
         layout.label(text= "Select A Shader Preset To Be Added.")
+
+        row = layout.row()
+        row.scale_y = 1.2
+        row.prop(context.scene, 'shader_presets', icon='MATSHADERBALL')
         
         row = layout.row()
-        row.operator('shader.galaxy_ops')
+        row.operator(SHADER_OT_ADD.bl_idname)
 
-        row = layout.row()
-        row.operator('shader.foil_ops')
-
-### GALAXY SHADER
-class SHADER_OT_GALAXY(bpy.types.Operator):
-    bl_label = "Galaxy"
+### BUTTON
+class SHADER_OT_ADD(bpy.types.Operator):
+    bl_label = "Add Shader"
     bl_idname = 'shader.galaxy_ops'
     
     def execute(self, context):
-        shaders.CREATE_galaxy_shader(self, context)
-        self.report({'INFO'}, 'Shader added.')
-        
-        return{'FINISHED'}
-
-### FOIL SHADER
-class SHADER_OT_FOIL(bpy.types.Operator):
-    bl_label = "Foil"
-    bl_idname = "shader.foil_ops"
-
-    def execute(self, context):
-        shaders.CREATE_foil_shader(self, context)
+        shaders.CREATE_shader_main(self, context)
         self.report({'INFO'}, 'Shader added.')
         
         return{'FINISHED'}
