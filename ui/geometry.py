@@ -12,13 +12,13 @@ import bpy
 from bpy_extras.io_utils import ExportHelper
 
 ###THE PANEL
-class SHREDDED_geo_clip(bpy.types.Panel):
-    bl_label = "Geometry Clipboard"
-    bl_idname = "SHREDDED.geoclip"
+class SHREDDED_geo_panel(bpy.types.Panel):
+    bl_label = "Geometry Tools"
+    bl_idname = "SHREDDED.geopanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = "Shredded"
-    # bl_options = {'DEFAULT_CLOSED'}
+    #bl_options = {'DEFAULT_CLOSED'}
     
     def draw(self, context):
         layout = self.layout
@@ -26,24 +26,38 @@ class SHREDDED_geo_clip(bpy.types.Panel):
         box = layout.box()
         col = box.column(align=True)
 
+        scale_big = 1.8
+        scale_small = 1.2
+
         obj_count = len(common.get_comp_objects())
         if obj_count == 0:
             row = col.row(align=True)
             row.label(text="No objects in scene.")
         else:
-            col.label(text="Copy Mesh Data")
-            row = col.row(align=True)
-            row.scale_y = 1.2
-            row.operator(GEO_CLIP_verts.bl_idname, icon= 'VERTEXSEL')
-            row.operator(GEO_CLIP_edges.bl_idname, icon= 'EDGESEL')
-            row = col.row(align=True)
-            row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
-
             if obj_count > 1:
                 col.separator()
                 row = col.row(align=True)
-                row.scale_y = 1.1
+                row.scale_y = scale_small
                 row.prop(context.scene, 'geoclip_list', icon='OUTLINER_OB_MESH')
+
+            col = layout.column(align=True)
+            row = col.row(align=True)
+            row.scale_y = scale_small
+            if not context.scene.expand_clip:
+                row.prop(context.scene, 'expand_clip', icon='ADD', emboss=True, expand=False, toggle=False, event=False)
+            else:
+                row.prop(context.scene, 'expand_clip', icon='REMOVE', emboss=True, expand=False, toggle=False, event=False)
+                box = layout.box()
+                col = box.column(align=True)
+
+                col.label(text="Copy Mesh PyData")
+                row = col.row(align=True)
+                row.scale_y = scale_small
+                row.operator(GEO_CLIP_verts.bl_idname, icon= 'VERTEXSEL')
+                row.operator(GEO_CLIP_edges.bl_idname, icon= 'EDGESEL')
+                row = col.row(align=True)
+                row.scale_y = scale_small
+                row.operator(GEO_CLIP_faces.bl_idname, icon= 'FACESEL')
         
         
 ###THE BUTTONS

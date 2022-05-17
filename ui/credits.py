@@ -23,8 +23,11 @@ class ShreddedCreditsPanel(bpy.types.Panel):
         row = col.row(align=True)
         row.label(text="Contributors")
 
+        scale_big = 1.5
+        scale_small = 1.2
+
         row = col.row(align=True)
-        row.scale_y = 1.2
+        row.scale_y = scale_small
         row.operator(YoutubeButton.bl_idname)
 
         col.separator()
@@ -33,12 +36,16 @@ class ShreddedCreditsPanel(bpy.types.Panel):
         row = col.row(align=True)
         row.label(text="Found a bug? Suggestion?")
         row = col.row(align=True)
-        row.scale_y = 1.5
+        row.scale_y = scale_big
         row.operator(IssueButton.bl_idname)
         col.separator()
         
         row = col.row(align=True)
+        row.scale_y = scale_small
         row.operator(LatestPatchButton.bl_idname, icon= "WORDWRAP_ON")
+
+        row = col.row(align=True)
+        row.label(text=globs.version_str)
 
 ### BUTTONS
 

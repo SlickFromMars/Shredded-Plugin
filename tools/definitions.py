@@ -1,7 +1,7 @@
 import bpy
 
 from bpy.types import Scene
-from bpy.props import BoolProperty, EnumProperty, FloatProperty, IntProperty, CollectionProperty
+from bpy.props import EnumProperty, BoolProperty
 
 from . import common as Common
 
@@ -18,6 +18,12 @@ def register_enums():
         description= "List of shaders.",
         items= [
             ("GALAXY", 'Galaxy', ''),
-            ("FOIL", 'Shiny Foil', '')
+            ("FOIL", 'Shiny Foil', ''),
+            ("MIRROR", 'Perfect Mirror', '')
         ]
+    )
+
+    Scene.expand_clip = BoolProperty(
+        name= 'Expand Clipboard',
+        default= True
     )

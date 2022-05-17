@@ -23,9 +23,9 @@ classes1 = [
     ui.preset_meshes.AddSus,
     ui.preset_meshes.AddCubee,
     ui.shaders.SHADER_OT_ADD,
-    ui.geo_clip.GEO_CLIP_verts,
-    ui.geo_clip.GEO_CLIP_edges,
-    ui.geo_clip.GEO_CLIP_faces,
+    ui.geometry.GEO_CLIP_verts,
+    ui.geometry.GEO_CLIP_edges,
+    ui.geometry.GEO_CLIP_faces,
     ui.credits.YoutubeButton,
     ui.credits.IssueButton,
     ui.credits.LatestPatchButton
@@ -34,7 +34,7 @@ classes1 = [
 classes2 = [
     ui.preset_meshes.VIEW3D_MT_mesh_presets,
     ui.shaders.ShaderPanel,
-    ui.geo_clip.SHREDDED_geo_clip,
+    ui.geometry.SHREDDED_geo_panel,
     ui.credits.ShreddedCreditsPanel
 ]
 

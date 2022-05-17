@@ -2,10 +2,10 @@
 
 A passion project to make useful tools for blender, that I'm making public.
 
-## Geometry Clipboard
+## Geometry Tools
 ![](https://github.com/SlickFromMars/Shredded-Plugin/blob/main/resources/img/tools.png)
 
-A way to copy the raw pydata of a mesh's geometry, to be reconstrutced anywhere. The data is compressed small enough to send without Nitro! Sweet!
+A geometry clipboard to copy the raw PyData of an object's geometry.
 
 ## Node Presets
 ![](https://github.com/SlickFromMars/Shredded-Plugin/blob/main/resources/img/shaders.png)

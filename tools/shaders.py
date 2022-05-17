@@ -7,8 +7,10 @@ def CREATE_shader_main(self, context):
             CREATE_galaxy_shader(self, context)
         case "FOIL":
             CREATE_foil_shader(self, context)
+        case "MIRROR":
+            CREATE_mirror_shader(self, context)
 
-### GALAXY SHADER
+### SHADERS
 def CREATE_galaxy_shader(self, context):
     material_galaxy = bpy.data.materials.new(name="Galaxy Volume")
     material_galaxy.use_nodes = True
@@ -96,3 +98,17 @@ def CREATE_foil_shader(self, context):
     material_foil.node_tree.links.new(material_bump.outputs[0], material_main.inputs[22])
 
     bpy.context.object.active_material = material_foil
+
+def CREATE_mirror_shader(self, context):
+    material_mirror = bpy.data.materials.new(name="Mirror Shader")
+    material_mirror.use_nodes = True
+
+    material_output = material_foil.node_tree.nodes.get('Material Output')
+    material_output.location = [500, 0]
+
+    material_main = material_foil.node_tree.nodes.get('Principled BSDF')
+    material_main.location = [200, 0]
+    material_main.inputs[0] = (0, 0, 0, 1)
+    material_main.inputs[9].default_value = 0
+
+    bpy.context.object.active_material = material_mirror
