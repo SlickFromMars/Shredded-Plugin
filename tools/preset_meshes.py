@@ -3,8 +3,8 @@ if "bpy" in locals():
     importlib.reload(low_poly_amogus_data)
     importlib.reload(cubee_data)
 else:
-    from ..preset_data import low_poly_amogus_data
-    from ..preset_data import cubee_data
+    from ..resources.preset_data import low_poly_amogus_data
+    from ..resources.preset_data import cubee_data
 
 import bpy
 from bpy.types import Operator
