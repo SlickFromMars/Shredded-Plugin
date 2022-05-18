@@ -103,10 +103,10 @@ def CREATE_mirror_shader(self, context):
     material_mirror = bpy.data.materials.new(name="Mirror Shader")
     material_mirror.use_nodes = True
 
-    material_output = material_foil.node_tree.nodes.get('Material Output')
+    material_output = material_main.node_tree.nodes.get('Material Output')
     material_output.location = [500, 0]
 
-    material_main = material_foil.node_tree.nodes.get('Principled BSDF')
+    material_main = material_main.node_tree.nodes.get('Principled BSDF')
     material_main.location = [200, 0]
     material_main.inputs[0] = (0, 0, 0, 1)
     material_main.inputs[9].default_value = 0

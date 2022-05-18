@@ -34,11 +34,10 @@ class SHREDDED_geo_panel(bpy.types.Panel):
             row = col.row(align=True)
             row.label(text="No objects in scene.")
         else:
-            if obj_count > 1:
-                col.separator()
-                row = col.row(align=True)
-                row.scale_y = scale_small
-                row.prop(context.scene, 'geoclip_list', icon='OUTLINER_OB_MESH')
+            col.separator()
+            row = col.row(align=True)
+            row.scale_y = scale_small
+            row.prop(context.scene, 'geoclip_list', icon='OUTLINER_OB_MESH')
 
             col = layout.column(align=True)
             row = col.row(align=True)
